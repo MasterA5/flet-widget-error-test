@@ -1,8 +1,10 @@
-from BubbleText import AnimatedTextBubble
-from flet import *
+import flet as ft
 
-@component
-def App(page: Page):
+from BubbleText import AnimatedTextBubble
+
+
+@ft.component
+def App(page: ft.Page):
     text = [
         "### 🌟 What is Flet?\n\n"
         "**Flet** is a framework in Python for building web, desktop, and mobile apps.\n\n"
@@ -22,14 +24,16 @@ def App(page: Page):
     ]
 
     bubble = AnimatedTextBubble(texts=text)
-    
-    return SafeArea(content=Column(controls=[bubble]))
+
+    return ft.SafeArea(content=ft.Column(controls=[bubble]))
+
 
 # App Entry Point
-def main(page: Page):
-    
-    page.vertical_alignment = "center"
-    page.horizontal_alignment = "center"
+def main(page: ft.Page):
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+    page.theme_mode = ft.ThemeMode.DARK
     page.render(lambda: App(page))
 
-run(main)
+
+ft.run(main)
